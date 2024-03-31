@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eefcda76098a4198b066deacee28d597" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="dbIDCardModel.tblClass" Width="1.5" PointX="3.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbIDCardModel.tblCollege" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbIDCardModel.tblPicture" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbIDCardModel.tblSession" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbIDCardModel.tblStudent" Width="1.5" PointX="6" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbIDCardModel.tblSubjectGroup" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbIDCardModel.tblYear" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="dbIDCardModel.FK_tblClass_tblCollege" ManuallyRouted="false" />
+        <AssociationConnector Association="dbIDCardModel.FK_tblClass_tblSessions" ManuallyRouted="false" />
+        <AssociationConnector Association="dbIDCardModel.FK_tblClass_tblSubjectGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="dbIDCardModel.FK_tblClass_tblYear" ManuallyRouted="false" />
+        <AssociationConnector Association="dbIDCardModel.FK_tblPictures_tblStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="dbIDCardModel.FK_tblStudent_tblClass" />
+        <AssociationConnector Association="dbIDCardModel.FK_tblStudent_tblCollege" />
+        <EntityTypeShape EntityType="dbIDCardModel.tblCardsData" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="dbIDCardModel.vwCollege" Width="1.5" PointX="5.375" PointY="4.75" />
+        <AssociationConnector Association="dbIDCardModel.FK_tblCardPictures_tblCardPictures" />
+        <AssociationConnector Association="dbIDCardModel.FK_tblCardPictures_tblCollege" />
+        <EntityTypeShape EntityType="dbIDCardModel.vwStudent" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="dbIDCardModel.tblDistrict" Width="1.5" PointX="0.75" PointY="12.125" />
+        <EntityTypeShape EntityType="dbIDCardModel.tblInstitutesType" Width="1.5" PointX="0.75" PointY="14.5" />
+        <AssociationConnector Association="dbIDCardModel.FK_tblCollege_tblDistricts" />
+        <AssociationConnector Association="dbIDCardModel.FK_tblCollege_tblInstitutesType" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

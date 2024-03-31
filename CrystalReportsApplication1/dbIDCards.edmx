@@ -1,0 +1,912 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbIDCardModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblCardsData">
+          <Key>
+            <PropertyRef Name="imgCardID" />
+          </Key>
+          <Property Name="imgCardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CollegeID" Type="int" />
+          <Property Name="FrontPicture" Type="varbinary(max)" />
+          <Property Name="BackPicture" Type="varbinary(max)" />
+          <Property Name="ClassID" Type="int" />
+          <Property Name="Signature" Type="varbinary(max)" />
+          <Property Name="PrintReportName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SampleCard" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblClass">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CollegeID" Type="int" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SessionID" Type="int" />
+          <Property Name="SubjectGroupID" Type="int" />
+          <Property Name="YearID" Type="int" />
+          <Property Name="ValidUpto" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCollege">
+          <Key>
+            <PropertyRef Name="CollegeID" />
+          </Key>
+          <Property Name="CollegeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CollegeCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CollegeName" Type="nvarchar" MaxLength="500" />
+          <Property Name="CollegeAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="CollegeContact" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstituteTypeID" Type="int" />
+          <Property Name="DistrictID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblDistricts">
+          <Key>
+            <PropertyRef Name="DistrictID" />
+          </Key>
+          <Property Name="DistrictID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblInstitutesType">
+          <Key>
+            <PropertyRef Name="InstituteTypeID" />
+          </Key>
+          <Property Name="InstituteTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InstituteType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblPictures">
+          <Key>
+            <PropertyRef Name="ImgID" />
+          </Key>
+          <Property Name="ImgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" />
+          <Property Name="Picture" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblSessions">
+          <Key>
+            <PropertyRef Name="SessionID" />
+          </Key>
+          <Property Name="SessionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblStudent">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegisterationNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="RollNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="bit" />
+          <Property Name="FormNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClassID" Type="int" />
+          <Property Name="CollegeID" Type="int" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblSubjectGroup">
+          <Key>
+            <PropertyRef Name="SubjectGroupID" />
+          </Key>
+          <Property Name="SubjectGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectGroupName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblYear">
+          <Key>
+            <PropertyRef Name="YearID" />
+          </Key>
+          <Property Name="YearID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YearName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbIDCard.dbo.vwColleges' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwColleges">
+          <Key>
+            <PropertyRef Name="CollegeID" />
+          </Key>
+          <Property Name="CollegeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Institute" Type="nvarchar" MaxLength="500" />
+          <Property Name="CollegeAddress" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbIDCard.dbo.vwStudents' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwStudents">
+          <Key>
+            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="SessionID" />
+            <PropertyRef Name="YearID" />
+            <PropertyRef Name="SubjectGroupID" />
+            <PropertyRef Name="ImgID" />
+          </Key>
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="RegisterationNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="RollNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="FormNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Picture" Type="varbinary(max)" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubjectGroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SessionName" Type="nvarchar" MaxLength="50" />
+          <Property Name="YearName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CollegeName" Type="nvarchar" MaxLength="500" />
+          <Property Name="CollegeAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="ClassID" Type="int" />
+          <Property Name="CollegeID" Type="int" />
+          <Property Name="ValidUpto" Type="nvarchar" MaxLength="50" />
+          <Property Name="SessionID" Type="int" Nullable="false" />
+          <Property Name="YearID" Type="int" Nullable="false" />
+          <Property Name="SubjectGroupID" Type="int" Nullable="false" />
+          <Property Name="ImgID" Type="int" Nullable="false" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_tblCardPictures_tblCardPictures">
+          <End Role="tblCardsData" Type="Self.tblCardsData" Multiplicity="1" />
+          <End Role="tblCardsData1" Type="Self.tblCardsData" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblCardsData">
+              <PropertyRef Name="imgCardID" />
+            </Principal>
+            <Dependent Role="tblCardsData1">
+              <PropertyRef Name="imgCardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCardPictures_tblCollege">
+          <End Role="tblCollege" Type="Self.tblCollege" Multiplicity="0..1" />
+          <End Role="tblCardsData" Type="Self.tblCardsData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCollege">
+              <PropertyRef Name="CollegeID" />
+            </Principal>
+            <Dependent Role="tblCardsData">
+              <PropertyRef Name="CollegeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblClass_tblCollege">
+          <End Role="tblCollege" Type="Self.tblCollege" Multiplicity="0..1" />
+          <End Role="tblClass" Type="Self.tblClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCollege">
+              <PropertyRef Name="CollegeID" />
+            </Principal>
+            <Dependent Role="tblClass">
+              <PropertyRef Name="CollegeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblClass_tblSessions">
+          <End Role="tblSessions" Type="Self.tblSessions" Multiplicity="0..1" />
+          <End Role="tblClass" Type="Self.tblClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSessions">
+              <PropertyRef Name="SessionID" />
+            </Principal>
+            <Dependent Role="tblClass">
+              <PropertyRef Name="SessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblClass_tblSubjectGroup">
+          <End Role="tblSubjectGroup" Type="Self.tblSubjectGroup" Multiplicity="0..1" />
+          <End Role="tblClass" Type="Self.tblClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSubjectGroup">
+              <PropertyRef Name="SubjectGroupID" />
+            </Principal>
+            <Dependent Role="tblClass">
+              <PropertyRef Name="SubjectGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblClass_tblYear">
+          <End Role="tblYear" Type="Self.tblYear" Multiplicity="0..1" />
+          <End Role="tblClass" Type="Self.tblClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblYear">
+              <PropertyRef Name="YearID" />
+            </Principal>
+            <Dependent Role="tblClass">
+              <PropertyRef Name="YearID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCollege_tblDistricts">
+          <End Role="tblDistricts" Type="Self.tblDistricts" Multiplicity="0..1" />
+          <End Role="tblCollege" Type="Self.tblCollege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDistricts">
+              <PropertyRef Name="DistrictID" />
+            </Principal>
+            <Dependent Role="tblCollege">
+              <PropertyRef Name="DistrictID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCollege_tblInstitutesType">
+          <End Role="tblInstitutesType" Type="Self.tblInstitutesType" Multiplicity="0..1" />
+          <End Role="tblCollege" Type="Self.tblCollege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblInstitutesType">
+              <PropertyRef Name="InstituteTypeID" />
+            </Principal>
+            <Dependent Role="tblCollege">
+              <PropertyRef Name="InstituteTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPictures_tblStudent">
+          <End Role="tblStudent" Type="Self.tblStudent" Multiplicity="0..1" />
+          <End Role="tblPictures" Type="Self.tblPictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudent">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="tblPictures">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStudent_tblClass">
+          <End Role="tblClass" Type="Self.tblClass" Multiplicity="0..1" />
+          <End Role="tblStudent" Type="Self.tblStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClass">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="tblStudent">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStudent_tblCollege">
+          <End Role="tblCollege" Type="Self.tblCollege" Multiplicity="0..1" />
+          <End Role="tblStudent" Type="Self.tblStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCollege">
+              <PropertyRef Name="CollegeID" />
+            </Principal>
+            <Dependent Role="tblStudent">
+              <PropertyRef Name="CollegeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="insertpictures" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="dbIDCardModelStoreContainer">
+          <EntitySet Name="tblCardsData" EntityType="Self.tblCardsData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblClass" EntityType="Self.tblClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCollege" EntityType="Self.tblCollege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDistricts" EntityType="Self.tblDistricts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblInstitutesType" EntityType="Self.tblInstitutesType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPictures" EntityType="Self.tblPictures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSessions" EntityType="Self.tblSessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStudent" EntityType="Self.tblStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSubjectGroup" EntityType="Self.tblSubjectGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblYear" EntityType="Self.tblYear" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwColleges" EntityType="Self.vwColleges" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwColleges].[CollegeID] AS [CollegeID], 
+    [vwColleges].[Institute] AS [Institute], 
+    [vwColleges].[CollegeAddress] AS [CollegeAddress]
+    FROM [dbo].[vwColleges] AS [vwColleges]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwStudents" EntityType="Self.vwStudents" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwStudents].[StudentID] AS [StudentID], 
+    [vwStudents].[RegisterationNumber] AS [RegisterationNumber], 
+    [vwStudents].[RollNumber] AS [RollNumber], 
+    [vwStudents].[Name] AS [Name], 
+    [vwStudents].[Gender] AS [Gender], 
+    [vwStudents].[FormNumber] AS [FormNumber], 
+    [vwStudents].[Picture] AS [Picture], 
+    [vwStudents].[FatherName] AS [FatherName], 
+    [vwStudents].[SubjectGroupName] AS [SubjectGroupName], 
+    [vwStudents].[ClassName] AS [ClassName], 
+    [vwStudents].[SessionName] AS [SessionName], 
+    [vwStudents].[YearName] AS [YearName], 
+    [vwStudents].[CollegeName] AS [CollegeName], 
+    [vwStudents].[CollegeAddress] AS [CollegeAddress], 
+    [vwStudents].[ClassID] AS [ClassID], 
+    [vwStudents].[CollegeID] AS [CollegeID], 
+    [vwStudents].[ValidUpto] AS [ValidUpto], 
+    [vwStudents].[SessionID] AS [SessionID], 
+    [vwStudents].[YearID] AS [YearID], 
+    [vwStudents].[SubjectGroupID] AS [SubjectGroupID], 
+    [vwStudents].[ImgID] AS [ImgID], 
+    [vwStudents].[isActive] AS [isActive], 
+    [vwStudents].[Subject] AS [Subject]
+    FROM [dbo].[vwStudents] AS [vwStudents]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tblCardPictures_tblCardPictures" Association="Self.FK_tblCardPictures_tblCardPictures">
+            <End Role="tblCardsData" EntitySet="tblCardsData" />
+            <End Role="tblCardsData1" EntitySet="tblCardsData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCardPictures_tblCollege" Association="Self.FK_tblCardPictures_tblCollege">
+            <End Role="tblCollege" EntitySet="tblCollege" />
+            <End Role="tblCardsData" EntitySet="tblCardsData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblClass_tblCollege" Association="Self.FK_tblClass_tblCollege">
+            <End Role="tblCollege" EntitySet="tblCollege" />
+            <End Role="tblClass" EntitySet="tblClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblClass_tblSessions" Association="Self.FK_tblClass_tblSessions">
+            <End Role="tblSessions" EntitySet="tblSessions" />
+            <End Role="tblClass" EntitySet="tblClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblClass_tblSubjectGroup" Association="Self.FK_tblClass_tblSubjectGroup">
+            <End Role="tblSubjectGroup" EntitySet="tblSubjectGroup" />
+            <End Role="tblClass" EntitySet="tblClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblClass_tblYear" Association="Self.FK_tblClass_tblYear">
+            <End Role="tblYear" EntitySet="tblYear" />
+            <End Role="tblClass" EntitySet="tblClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCollege_tblDistricts" Association="Self.FK_tblCollege_tblDistricts">
+            <End Role="tblDistricts" EntitySet="tblDistricts" />
+            <End Role="tblCollege" EntitySet="tblCollege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCollege_tblInstitutesType" Association="Self.FK_tblCollege_tblInstitutesType">
+            <End Role="tblInstitutesType" EntitySet="tblInstitutesType" />
+            <End Role="tblCollege" EntitySet="tblCollege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPictures_tblStudent" Association="Self.FK_tblPictures_tblStudent">
+            <End Role="tblStudent" EntitySet="tblStudent" />
+            <End Role="tblPictures" EntitySet="tblPictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStudent_tblClass" Association="Self.FK_tblStudent_tblClass">
+            <End Role="tblClass" EntitySet="tblClass" />
+            <End Role="tblStudent" EntitySet="tblStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStudent_tblCollege" Association="Self.FK_tblStudent_tblCollege">
+            <End Role="tblCollege" EntitySet="tblCollege" />
+            <End Role="tblStudent" EntitySet="tblStudent" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbIDCardModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblClass">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeID" Type="Int32" />
+          <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SessionID" Type="Int32" />
+          <Property Name="SubjectGroupID" Type="Int32" />
+          <Property Name="YearID" Type="Int32" />
+          <NavigationProperty Name="tblCollege" Relationship="Self.FK_tblClass_tblCollege" FromRole="tblClass" ToRole="tblCollege" />
+          <NavigationProperty Name="tblSession" Relationship="Self.FK_tblClass_tblSessions" FromRole="tblClass" ToRole="tblSessions" />
+          <NavigationProperty Name="tblSubjectGroup" Relationship="Self.FK_tblClass_tblSubjectGroup" FromRole="tblClass" ToRole="tblSubjectGroup" />
+          <NavigationProperty Name="tblYear" Relationship="Self.FK_tblClass_tblYear" FromRole="tblClass" ToRole="tblYear" />
+          <NavigationProperty Name="tblStudents" Relationship="dbIDCardModel.FK_tblStudent_tblClass" FromRole="tblClass" ToRole="tblStudent" />
+          <Property Name="ValidUpto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblCollege">
+          <Key>
+            <PropertyRef Name="CollegeID" />
+          </Key>
+          <Property Name="CollegeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CollegeName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CollegeAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CollegeContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblClasses" Relationship="Self.FK_tblClass_tblCollege" FromRole="tblCollege" ToRole="tblClass" />
+          <NavigationProperty Name="tblStudents" Relationship="dbIDCardModel.FK_tblStudent_tblCollege" FromRole="tblCollege" ToRole="tblStudent" />
+          <NavigationProperty Name="tblCardsDatas" Relationship="dbIDCardModel.FK_tblCardPictures_tblCollege" FromRole="tblCollege" ToRole="tblCardsData" />
+          <Property Name="InstituteTypeID" Type="Int32" />
+          <Property Name="DistrictID" Type="Int32" />
+          <NavigationProperty Name="tblDistrict" Relationship="dbIDCardModel.FK_tblCollege_tblDistricts" FromRole="tblCollege" ToRole="tblDistrict" />
+          <NavigationProperty Name="tblInstitutesType" Relationship="dbIDCardModel.FK_tblCollege_tblInstitutesType" FromRole="tblCollege" ToRole="tblInstitutesType" />
+        </EntityType>
+        <EntityType Name="tblPicture">
+          <Key>
+            <PropertyRef Name="ImgID" />
+          </Key>
+          <Property Name="ImgID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="tblStudent" Relationship="Self.FK_tblPictures_tblStudent" FromRole="tblPictures" ToRole="tblStudent" />
+        </EntityType>
+        <EntityType Name="tblSession">
+          <Key>
+            <PropertyRef Name="SessionID" />
+          </Key>
+          <Property Name="SessionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblClasses" Relationship="Self.FK_tblClass_tblSessions" FromRole="tblSessions" ToRole="tblClass" />
+        </EntityType>
+        <EntityType Name="tblStudent">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegisterationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RollNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="FormNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="CollegeID" Type="Int32" />
+          <NavigationProperty Name="tblPictures" Relationship="Self.FK_tblPictures_tblStudent" FromRole="tblStudent" ToRole="tblPictures" />
+          <NavigationProperty Name="tblClass" Relationship="dbIDCardModel.FK_tblStudent_tblClass" FromRole="tblStudent" ToRole="tblClass" />
+          <NavigationProperty Name="tblCollege" Relationship="dbIDCardModel.FK_tblStudent_tblCollege" FromRole="tblStudent" ToRole="tblCollege" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblSubjectGroup">
+          <Key>
+            <PropertyRef Name="SubjectGroupID" />
+          </Key>
+          <Property Name="SubjectGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblClasses" Relationship="Self.FK_tblClass_tblSubjectGroup" FromRole="tblSubjectGroup" ToRole="tblClass" />
+        </EntityType>
+        <EntityType Name="tblYear">
+          <Key>
+            <PropertyRef Name="YearID" />
+          </Key>
+          <Property Name="YearID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YearName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblClasses" Relationship="Self.FK_tblClass_tblYear" FromRole="tblYear" ToRole="tblClass" />
+        </EntityType>
+        <Association Name="FK_tblClass_tblCollege">
+          <End Role="tblCollege" Type="Self.tblCollege" Multiplicity="0..1" />
+          <End Role="tblClass" Type="Self.tblClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCollege">
+              <PropertyRef Name="CollegeID" />
+            </Principal>
+            <Dependent Role="tblClass">
+              <PropertyRef Name="CollegeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblClass_tblSessions">
+          <End Role="tblSessions" Type="Self.tblSession" Multiplicity="0..1" />
+          <End Role="tblClass" Type="Self.tblClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSessions">
+              <PropertyRef Name="SessionID" />
+            </Principal>
+            <Dependent Role="tblClass">
+              <PropertyRef Name="SessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblClass_tblSubjectGroup">
+          <End Role="tblSubjectGroup" Type="Self.tblSubjectGroup" Multiplicity="0..1" />
+          <End Role="tblClass" Type="Self.tblClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSubjectGroup">
+              <PropertyRef Name="SubjectGroupID" />
+            </Principal>
+            <Dependent Role="tblClass">
+              <PropertyRef Name="SubjectGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblClass_tblYear">
+          <End Role="tblYear" Type="Self.tblYear" Multiplicity="0..1" />
+          <End Role="tblClass" Type="Self.tblClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblYear">
+              <PropertyRef Name="YearID" />
+            </Principal>
+            <Dependent Role="tblClass">
+              <PropertyRef Name="YearID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPictures_tblStudent">
+          <End Role="tblStudent" Type="Self.tblStudent" Multiplicity="0..1" />
+          <End Role="tblPictures" Type="Self.tblPicture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudent">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="tblPictures">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbIDCardEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblClasses" EntityType="Self.tblClass" />
+          <EntitySet Name="tblColleges" EntityType="Self.tblCollege" />
+          <EntitySet Name="tblPictures" EntityType="Self.tblPicture" />
+          <EntitySet Name="tblSessions" EntityType="Self.tblSession" />
+          <EntitySet Name="tblStudents" EntityType="Self.tblStudent" />
+          <EntitySet Name="tblSubjectGroups" EntityType="Self.tblSubjectGroup" />
+          <EntitySet Name="tblYears" EntityType="Self.tblYear" />
+          <AssociationSet Name="FK_tblClass_tblCollege" Association="Self.FK_tblClass_tblCollege">
+            <End Role="tblCollege" EntitySet="tblColleges" />
+            <End Role="tblClass" EntitySet="tblClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblClass_tblSessions" Association="Self.FK_tblClass_tblSessions">
+            <End Role="tblSessions" EntitySet="tblSessions" />
+            <End Role="tblClass" EntitySet="tblClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblClass_tblSubjectGroup" Association="Self.FK_tblClass_tblSubjectGroup">
+            <End Role="tblSubjectGroup" EntitySet="tblSubjectGroups" />
+            <End Role="tblClass" EntitySet="tblClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblClass_tblYear" Association="Self.FK_tblClass_tblYear">
+            <End Role="tblYear" EntitySet="tblYears" />
+            <End Role="tblClass" EntitySet="tblClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPictures_tblStudent" Association="Self.FK_tblPictures_tblStudent">
+            <End Role="tblStudent" EntitySet="tblStudents" />
+            <End Role="tblPictures" EntitySet="tblPictures" />
+          </AssociationSet>
+          <FunctionImport Name="insertpictures" />
+          <AssociationSet Name="FK_tblStudent_tblClass" Association="dbIDCardModel.FK_tblStudent_tblClass">
+            <End Role="tblClass" EntitySet="tblClasses" />
+            <End Role="tblStudent" EntitySet="tblStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStudent_tblCollege" Association="dbIDCardModel.FK_tblStudent_tblCollege">
+            <End Role="tblCollege" EntitySet="tblColleges" />
+            <End Role="tblStudent" EntitySet="tblStudents" />
+          </AssociationSet>
+          <EntitySet Name="tblCardsDatas" EntityType="dbIDCardModel.tblCardsData" />
+          <EntitySet Name="vwColleges" EntityType="dbIDCardModel.vwCollege" />
+          <AssociationSet Name="FK_tblCardPictures_tblCardPictures" Association="dbIDCardModel.FK_tblCardPictures_tblCardPictures">
+            <End Role="tblCardsData" EntitySet="tblCardsDatas" />
+            <End Role="tblCardsData1" EntitySet="tblCardsDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCardPictures_tblCollege" Association="dbIDCardModel.FK_tblCardPictures_tblCollege">
+            <End Role="tblCollege" EntitySet="tblColleges" />
+            <End Role="tblCardsData" EntitySet="tblCardsDatas" />
+          </AssociationSet>
+          <EntitySet Name="vwStudents" EntityType="dbIDCardModel.vwStudent" />
+          <EntitySet Name="tblDistricts" EntityType="dbIDCardModel.tblDistrict" />
+          <EntitySet Name="tblInstitutesTypes" EntityType="dbIDCardModel.tblInstitutesType" />
+          <AssociationSet Name="FK_tblCollege_tblDistricts" Association="dbIDCardModel.FK_tblCollege_tblDistricts">
+            <End Role="tblDistrict" EntitySet="tblDistricts" />
+            <End Role="tblCollege" EntitySet="tblColleges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCollege_tblInstitutesType" Association="dbIDCardModel.FK_tblCollege_tblInstitutesType">
+            <End Role="tblInstitutesType" EntitySet="tblInstitutesTypes" />
+            <End Role="tblCollege" EntitySet="tblColleges" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_tblStudent_tblClass">
+          <End Type="dbIDCardModel.tblClass" Role="tblClass" Multiplicity="0..1" />
+          <End Type="dbIDCardModel.tblStudent" Role="tblStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClass">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="tblStudent">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStudent_tblCollege">
+          <End Type="dbIDCardModel.tblCollege" Role="tblCollege" Multiplicity="0..1" />
+          <End Type="dbIDCardModel.tblStudent" Role="tblStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCollege">
+              <PropertyRef Name="CollegeID" />
+            </Principal>
+            <Dependent Role="tblStudent">
+              <PropertyRef Name="CollegeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblCardsData">
+          <Key>
+            <PropertyRef Name="imgCardID" />
+          </Key>
+          <Property Name="imgCardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeID" Type="Int32" />
+          <Property Name="FrontPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="BackPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="Signature" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PrintReportName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SampleCard" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="tblCardsData1" Relationship="dbIDCardModel.FK_tblCardPictures_tblCardPictures" FromRole="tblCardsData" ToRole="tblCardsData1" />
+          <NavigationProperty Name="tblCardsData2" Relationship="dbIDCardModel.FK_tblCardPictures_tblCardPictures" FromRole="tblCardsData1" ToRole="tblCardsData" />
+          <NavigationProperty Name="tblCollege" Relationship="dbIDCardModel.FK_tblCardPictures_tblCollege" FromRole="tblCardsData" ToRole="tblCollege" />
+        </EntityType>
+        <EntityType Name="vwCollege">
+          <Key>
+            <PropertyRef Name="CollegeID" />
+          </Key>
+          <Property Name="CollegeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Institute" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CollegeAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_tblCardPictures_tblCardPictures">
+          <End Type="dbIDCardModel.tblCardsData" Role="tblCardsData" Multiplicity="1" />
+          <End Type="dbIDCardModel.tblCardsData" Role="tblCardsData1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblCardsData">
+              <PropertyRef Name="imgCardID" />
+            </Principal>
+            <Dependent Role="tblCardsData1">
+              <PropertyRef Name="imgCardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCardPictures_tblCollege">
+          <End Type="dbIDCardModel.tblCollege" Role="tblCollege" Multiplicity="0..1" />
+          <End Type="dbIDCardModel.tblCardsData" Role="tblCardsData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCollege">
+              <PropertyRef Name="CollegeID" />
+            </Principal>
+            <Dependent Role="tblCardsData">
+              <PropertyRef Name="CollegeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vwStudent">
+          <Key>
+            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="SessionID" />
+            <PropertyRef Name="YearID" />
+            <PropertyRef Name="SubjectGroupID" />
+            <PropertyRef Name="ImgID" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="RegisterationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RollNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="FormNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SessionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YearName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CollegeName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CollegeAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="CollegeID" Type="Int32" />
+          <Property Name="ValidUpto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SessionID" Type="Int32" Nullable="false" />
+          <Property Name="YearID" Type="Int32" Nullable="false" />
+          <Property Name="SubjectGroupID" Type="Int32" Nullable="false" />
+          <Property Name="ImgID" Type="Int32" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblDistrict">
+          <Key>
+            <PropertyRef Name="DistrictID" />
+          </Key>
+          <Property Name="DistrictID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblColleges" Relationship="dbIDCardModel.FK_tblCollege_tblDistricts" FromRole="tblDistrict" ToRole="tblCollege" />
+        </EntityType>
+        <EntityType Name="tblInstitutesType">
+          <Key>
+            <PropertyRef Name="InstituteTypeID" />
+          </Key>
+          <Property Name="InstituteTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstituteType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblColleges" Relationship="dbIDCardModel.FK_tblCollege_tblInstitutesType" FromRole="tblInstitutesType" ToRole="tblCollege" />
+        </EntityType>
+        <Association Name="FK_tblCollege_tblDistricts">
+          <End Type="dbIDCardModel.tblDistrict" Role="tblDistrict" Multiplicity="0..1" />
+          <End Type="dbIDCardModel.tblCollege" Role="tblCollege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDistrict">
+              <PropertyRef Name="DistrictID" />
+            </Principal>
+            <Dependent Role="tblCollege">
+              <PropertyRef Name="DistrictID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCollege_tblInstitutesType">
+          <End Type="dbIDCardModel.tblInstitutesType" Role="tblInstitutesType" Multiplicity="0..1" />
+          <End Type="dbIDCardModel.tblCollege" Role="tblCollege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblInstitutesType">
+              <PropertyRef Name="InstituteTypeID" />
+            </Principal>
+            <Dependent Role="tblCollege">
+              <PropertyRef Name="InstituteTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbIDCardModelStoreContainer" CdmEntityContainer="dbIDCardEntities">
+          <EntitySetMapping Name="tblClasses">
+            <EntityTypeMapping TypeName="dbIDCardModel.tblClass">
+              <MappingFragment StoreEntitySet="tblClass">
+                <ScalarProperty Name="ValidUpto" ColumnName="ValidUpto" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="CollegeID" ColumnName="CollegeID" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="SubjectGroupID" ColumnName="SubjectGroupID" />
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblColleges">
+            <EntityTypeMapping TypeName="dbIDCardModel.tblCollege">
+              <MappingFragment StoreEntitySet="tblCollege">
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="InstituteTypeID" ColumnName="InstituteTypeID" />
+                <ScalarProperty Name="CollegeID" ColumnName="CollegeID" />
+                <ScalarProperty Name="CollegeCode" ColumnName="CollegeCode" />
+                <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
+                <ScalarProperty Name="CollegeAddress" ColumnName="CollegeAddress" />
+                <ScalarProperty Name="CollegeContact" ColumnName="CollegeContact" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPictures">
+            <EntityTypeMapping TypeName="dbIDCardModel.tblPicture">
+              <MappingFragment StoreEntitySet="tblPictures">
+                <ScalarProperty Name="ImgID" ColumnName="ImgID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSessions">
+            <EntityTypeMapping TypeName="dbIDCardModel.tblSession">
+              <MappingFragment StoreEntitySet="tblSessions">
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="SessionName" ColumnName="SessionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStudents">
+            <EntityTypeMapping TypeName="dbIDCardModel.tblStudent">
+              <MappingFragment StoreEntitySet="tblStudent">
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="RegisterationNumber" ColumnName="RegisterationNumber" />
+                <ScalarProperty Name="RollNumber" ColumnName="RollNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="FormNumber" ColumnName="FormNumber" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="CollegeID" ColumnName="CollegeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSubjectGroups">
+            <EntityTypeMapping TypeName="dbIDCardModel.tblSubjectGroup">
+              <MappingFragment StoreEntitySet="tblSubjectGroup">
+                <ScalarProperty Name="SubjectGroupID" ColumnName="SubjectGroupID" />
+                <ScalarProperty Name="SubjectGroupName" ColumnName="SubjectGroupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblYears">
+            <EntityTypeMapping TypeName="dbIDCardModel.tblYear">
+              <MappingFragment StoreEntitySet="tblYear">
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
+                <ScalarProperty Name="YearName" ColumnName="YearName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="insertpictures" FunctionName="dbIDCardModel.Store.insertpictures" />
+          <EntitySetMapping Name="tblCardsDatas">
+            <EntityTypeMapping TypeName="dbIDCardModel.tblCardsData">
+              <MappingFragment StoreEntitySet="tblCardsData">
+                <ScalarProperty Name="SampleCard" ColumnName="SampleCard" />
+                <ScalarProperty Name="PrintReportName" ColumnName="PrintReportName" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="BackPicture" ColumnName="BackPicture" />
+                <ScalarProperty Name="FrontPicture" ColumnName="FrontPicture" />
+                <ScalarProperty Name="CollegeID" ColumnName="CollegeID" />
+                <ScalarProperty Name="imgCardID" ColumnName="imgCardID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwColleges">
+            <EntityTypeMapping TypeName="dbIDCardModel.vwCollege">
+              <MappingFragment StoreEntitySet="vwColleges">
+                <ScalarProperty Name="CollegeAddress" ColumnName="CollegeAddress" />
+                <ScalarProperty Name="Institute" ColumnName="Institute" />
+                <ScalarProperty Name="CollegeID" ColumnName="CollegeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwStudents">
+            <EntityTypeMapping TypeName="dbIDCardModel.vwStudent">
+              <MappingFragment StoreEntitySet="vwStudents">
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="ImgID" ColumnName="ImgID" />
+                <ScalarProperty Name="SubjectGroupID" ColumnName="SubjectGroupID" />
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="ValidUpto" ColumnName="ValidUpto" />
+                <ScalarProperty Name="CollegeID" ColumnName="CollegeID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="CollegeAddress" ColumnName="CollegeAddress" />
+                <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
+                <ScalarProperty Name="YearName" ColumnName="YearName" />
+                <ScalarProperty Name="SessionName" ColumnName="SessionName" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="SubjectGroupName" ColumnName="SubjectGroupName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="FormNumber" ColumnName="FormNumber" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RollNumber" ColumnName="RollNumber" />
+                <ScalarProperty Name="RegisterationNumber" ColumnName="RegisterationNumber" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDistricts">
+            <EntityTypeMapping TypeName="dbIDCardModel.tblDistrict">
+              <MappingFragment StoreEntitySet="tblDistricts">
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInstitutesTypes">
+            <EntityTypeMapping TypeName="dbIDCardModel.tblInstitutesType">
+              <MappingFragment StoreEntitySet="tblInstitutesType">
+                <ScalarProperty Name="InstituteType" ColumnName="InstituteType" />
+                <ScalarProperty Name="InstituteTypeID" ColumnName="InstituteTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

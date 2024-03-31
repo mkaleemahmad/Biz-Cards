@@ -1,0 +1,466 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6D89207F-9B69-4D26-B76C-43F1B45736D9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CrystalReportsApplication1</RootNamespace>
+    <AssemblyName>CrystalReportsApplication1</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CardsReports\CITY College PVC - Copy.cs">
+      <DependentUpon>CITY College PVC - Copy.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\CITY College PVC - Inter.cs">
+      <DependentUpon>CITY College PVC - Inter.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\CITY College PVC.cs">
+      <DependentUpon>CITY College PVC.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\College Road PVC.cs">
+      <DependentUpon>College Road PVC.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\Noshehra Road College.cs">
+      <DependentUpon>Noshehra Road College.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\Rahwali College PVC.cs">
+      <DependentUpon>Rahwali College PVC.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\Model Town PVC - Inter.cs">
+      <DependentUpon>Model Town PVC - Inter.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\MODELTOWN1st year.cs">
+      <DependentUpon>MODELTOWN1st year.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\Model Town PVC.cs">
+      <DependentUpon>Model Town PVC.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\SagheerSPark - 2nd year - Copy1.cs">
+      <DependentUpon>SagheerSPark - 2nd year - Copy1.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\SagheerSPark - 2nd year.cs">
+      <DependentUpon>SagheerSPark - 2nd year.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\SagheerSPark.cs">
+      <DependentUpon>SagheerSPark.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="dbIDCards.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbIDCards.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbIDCards.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbIDCards.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbIDCards.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbIDCards.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="frmCardsReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCardsReports.Designer.cs">
+      <DependentUpon>frmCardsReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInsertPictures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInsertPictures.Designer.cs">
+      <DependentUpon>frmInsertPictures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInstitutes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInstitutes.Designer.cs">
+      <DependentUpon>frmInstitutes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSession.Designer.cs">
+      <DependentUpon>frmSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStudents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStudents.Designer.cs">
+      <DependentUpon>frmStudents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIHome.Designer.cs">
+      <DependentUpon>MDIHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CardsReports\rptCardBack.cs">
+      <DependentUpon>rptCardBack.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\rptCardFront - Copy %282%29.cs">
+      <DependentUpon>rptCardFront - Copy %282%29.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\rptCardFront - Copy %283%29.cs">
+      <DependentUpon>rptCardFront - Copy %283%29.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\RPTBACK.cs">
+      <DependentUpon>RPTBACK.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\rptCardFront - Copy %284%29.cs">
+      <DependentUpon>rptCardFront - Copy %284%29.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\rptCardFront - PVC.cs">
+      <DependentUpon>rptCardFront - PVC.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\rptCardFront - Copy.cs">
+      <DependentUpon>rptCardFront - Copy.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\MODELTOWNMAURDU.cs">
+      <DependentUpon>MODELTOWNMAURDU.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\rptCardFront1 - Copy.cs">
+      <DependentUpon>rptCardFront1 - Copy.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CardsReports\rptCardFront1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCardFront1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tblCardsData.cs">
+      <DependentUpon>dbIDCards.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblClass.cs">
+      <DependentUpon>dbIDCards.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblCollege.cs">
+      <DependentUpon>dbIDCards.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblDistrict.cs">
+      <DependentUpon>dbIDCards.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblInstitutesType.cs">
+      <DependentUpon>dbIDCards.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPicture.cs">
+      <DependentUpon>dbIDCards.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSession.cs">
+      <DependentUpon>dbIDCards.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblStudent.cs">
+      <DependentUpon>dbIDCards.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSubjectGroup.cs">
+      <DependentUpon>dbIDCards.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblYear.cs">
+      <DependentUpon>dbIDCards.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwCollege.cs">
+      <DependentUpon>dbIDCards.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwStudent.cs">
+      <DependentUpon>dbIDCards.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CardsReports\CITY College PVC - Copy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CITY College PVC - Copy.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\CITY College PVC - Inter.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CITY College PVC - Inter.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\CITY College PVC.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CITY College PVC.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\College Road PVC.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>College Road PVC.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\Noshehra Road College.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Noshehra Road College.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\Rahwali College PVC.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rahwali College PVC.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\Model Town PVC - Inter.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Model Town PVC - Inter.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\MODELTOWN1st year.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MODELTOWN1st year.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\Model Town PVC.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Model Town PVC.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\SagheerSPark - 2nd year - Copy1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SagheerSPark - 2nd year - Copy1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\SagheerSPark - 2nd year.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SagheerSPark - 2nd year.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\SagheerSPark.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SagheerSPark.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCardsReports.resx">
+      <DependentUpon>frmCardsReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInsertPictures.resx">
+      <DependentUpon>frmInsertPictures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInstitutes.resx">
+      <DependentUpon>frmInstitutes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSession.resx">
+      <DependentUpon>frmSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStudents.resx">
+      <DependentUpon>frmStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIHome.resx">
+      <DependentUpon>MDIHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\rptCardBack.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCardBack.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\rptCardFront - Copy %282%29.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCardFront - Copy %282%29.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\rptCardFront - Copy %283%29.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCardFront - Copy %283%29.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\RPTBACK.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPTBACK.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\rptCardFront - Copy %284%29.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCardFront - Copy %284%29.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\rptCardFront - PVC.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCardFront - PVC.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\rptCardFront - Copy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCardFront - Copy.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\MODELTOWNMAURDU.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MODELTOWNMAURDU.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\rptCardFront1 - Copy.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCardFront1 - Copy.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardsReports\rptCardFront1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCardFront1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="dbIDCards.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbIDCards.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="dbIDCards.edmx.diagram">
+      <DependentUpon>dbIDCards.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\dbIDCardEntities.datasource" />
+    <None Include="Properties\DataSources\tblCollege.datasource" />
+    <None Include="Properties\DataSources\tblSession.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+    <Service Include="{FE73BB80-53F4-4AD0-A5F9-6A0BCE662292}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dbIDCards.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>dbIDCards.Context.cs</LastGenOutput>
+      <DependentUpon>dbIDCards.edmx</DependentUpon>
+    </Content>
+    <Content Include="dbIDCards.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbIDCards.edmx</DependentUpon>
+      <LastGenOutput>dbIDCards.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
